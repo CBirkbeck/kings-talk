@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+
+        <title>Maths in the age of AI</title>
+
+        <meta name="description" content="Maths in the age of AI.">
+        <meta name="author" content="Chris Birkbeck">
+
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="dist/reset.css">
+        <link rel="stylesheet" href="dist/reveal.css">
+        <link rel="stylesheet" href="dist/theme/black.css" id="theme">
+
+        <link rel="stylesheet" href="plugin/highlight/monokai.css">
+        <style>
+        pre code {
+            font-size: 0.7em; /* Change 80% to whatever width you prefer */
+        }
+        .r-stack {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        </style>
+         <script type="module">
+            import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@9/dist/mermaid.esm.min.js';
+            mermaid.initialize({
+                startOnLoad: true,
+                theme: 'base',
+                themeVariables: {
+                    primaryColor: 'rgba(255, 255, 255, 0.050)',
+                    primaryTextColor: '#fff',
+                    primaryBorderColor: 'rgba(255, 255, 255, 0.18)',
+                    boxShadow: '0 8px 12px rgba(0,0,0,0.1)',
+                    nodeBorderRadius: '15px',
+                    padding: '20px',
+                    margin: '10px',
+                    minWidth: '400px',
+                    backdropFilter: 'blur(20px)',
+                    webkitBackdropFilter: 'blur(20px)',
+                    fontWeight: 'bold',
+                    textAlign: 'center',
+                    lineHeight: '2'
+                }
+            });
+        </script>
+        <style>
+        .reveal .slides {
+            width: 100%; /* Adjust this value as needed */
+            height: auto; /* Keeps the height adaptable */
+        }
+        </style>
+        <style>
+        /* Custom CSS for theorem and definition */
+        .reveal .theorem, .reveal .definition {
+            margin: 2em 0;
+            padding: 1em 1em;
+            border-left: 5px solid #3498db;
+            border-right: 5px solid #3498db;
+            background-color: #2c3e50; /* Dark grey background */
+
+        }
+
+
+        .reveal .theorem p:first-child, .reveal .definition p:first-child {
+            margin-top: 0;
+        }
+
+        .reveal .theorem p:last-child, .reveal .definition p:last-child {
+            margin-bottom: 0;
+        }
+        </style>
+        <script>
+            document.addEventListener("DOMContentLoaded", event => {
+              // we can move only if we are not in a browser's tab
+              isBrowser = matchMedia("(display-mode: browser)").matches;
+              if (!isBrowser) {
+                  window.resizeTo(1024, 768);
+              }
+            });
+          </script>
+        <style>
+        .bento-box {
+          display: flex;
+          justify-content: space-around;
+          flex-wrap: wrap;
+          margin-top: 20px;
+        }
+
+        .bento-box .box {
+          flex: 1;
+          margin: 10px;
+          padding: 20px;
+          background-color:#2c3e50; /* Light grey background */
+          border-radius: 15px; /* Rounded corners */
+          box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Soft shadow */
+          min-width: 250px; /* Minimum width of boxes */
+          text-align: center; /* Center text */
+        }
+
+        .box .inner-box {
+            background-color: #e0e0e0; /* Slightly different background to distinguish */
+            margin-bottom: 10px; /* Space between the two inner boxes */
+            padding: 10px;
+            border-radius: 10px; /* Optional: rounded corners for inner boxes */
+            }
+
+            /* Last inner-box should not have a margin at the bottom */
+            .box .inner-box:last-child {
+            margin-bottom: 0;
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <div class="reveal" >
+
+            <div class="slides">
+                <section data-background-gradient="linear-gradient(to bottom, #283b95, #17b2c3)">
+                    <h2>
+                        <span style="text-transform: none;">Maths in the age of </span>
+                        <span style="text-transform: none; color: #000000">AI</span>
+                    </h2>
+                    <p>
+                        <small>Chris Birkbeck</small>
+                    </p>
+                    <p>
+                        <small>University of East Anglia</small>
+                    </p>
+                    <small>
+                        slides: <a style="color: #000000;" href="https://cbirkbeck.github.io/kings-talk/">
+                        cbirkbeck.github.io/kings-talk/</a>
+                    </small>
+                    <div style="text-align: center;">
+						<img src="QR.png" alt="QR Code" style="width: 100px; height: 100px;">
+					</div>
+                    <div style="text-align: center;">
+                        </div>
+                    <small style="display: block; text-align: center; opacity: 0.5">2025-06-24</small>
+                </section>
+
+
+                   <section data-markdown data-auto-animate data-background-gradient="linear-gradient(to bottom, #283b95, #17b2c3)">
+                    <textarea data-template>
+                        ### <span style="text-transform: none;">Today's Talk</span>
+                        - I want to describe ways in which I have been incorporating <span style="text-transform: none; color: #000000">AI tools</span> into my mathematical workflow. In particular, teaching!
+                        ---
+                        ### <span style="text-transform: none;">Today's Talk</span>
+                        - I want to describe ways in which I have been incorporating <span style="text-transform: none; color: #000000">AI tools</span> into my mathematical workflow. In particular, teaching!
+                        - Along the way, I will also show you some lesser known AI tools that I find handy. 
+                        ---
+                        ### <span style="text-transform: none;">What is AI?</span>
+                        - By AI I mean a Large Language Model (LLM) such as <span style="text-transform: none; color: #000000">ChatGPT</span> or <span style="text-transform: none; color: #000000">Copilot</span> or <span style="text-transform: none; color: #000000">Gemini</span>.
+                        ---
+                        ### <span style="text-transform: none;">What is AI?</span>
+                        - By AI I mean a Large Language Model (LLM) such as <span style="text-transform: none; color: #000000">ChatGPT</span> or <span style="text-transform: none; color: #000000">Copilot</span> or <span style="text-transform: none; color: #000000">Gemini</span>.
+                        - These are statistical models trained on vast amounts of text data to predict the next word in a sequence. (This sentence was produced by Copilot)!
+                        ---
+                        ### <span style="text-transform: none;">What is AI?</span>
+                        - By AI I mean a Large Language Model (LLM) such as <span style="text-transform: none; color: #000000">ChatGPT</span> or <span style="text-transform: none; color: #000000">Copilot</span> or <span style="text-transform: none; color: #000000">Gemini</span>.
+                        - These are statistical models trained on vast amounts of text data to predict the next word in a sequence. (This sentence was produced by Copilot)!
+                        - They aren't new, but have recently become much better!
+                        ---
+                         ### <span style="text-transform: none;">How good is it at maths?</span>
+                        ---
+                        ### <span style="text-transform: none;">How good is it at maths?</span>
+                        - Very good.
+                        - **Progress in Competitions:** Achievements like those in the **International Mathematical Olympiad (IMO)** show rapid improvement.
+                            <a href="https://harmonic.fun/news" data-preview-link>**HARMONIC's IMO Results**</a>
+                        ---
+                        ### <span style="text-transform: none;">How good is it at maths?</span>
+                        - **Research Breakthroughs:** AI can now help you do reaseach (in some areas).
+                        **Example:** <a href="https://twitter.com/ErnestRyu/status/1980759528984686715" target="_blank">**Twitter/X thread by Ernest Ryu**</a>
+                        ---
+                        ### <span style="text-transform: none;">Challenge</span>
+                        - Find a problem sheet for any University maths course that top AI tools can't get a 2:1 or 1st on. 
+                        ---
+                        ### <span style="text-transform: none;">Challenge</span>
+                        - Find a problem sheet for any University maths course that top AI tools can't get a 2:1 or 1st on. 
+                        - The problem is that as soon as our student's can do them, then so can AI.  <a href="https://gemini.google.com/app/93829c4e2a764444" target="_blank">**Gemini**</a> 
+                        ---
+                        ### <span style="text-transform: none;">Using AI is easy</span>
+                        - You can just take your <a href="Sheet 8.pdf" data-preview-link>**problem sheet**</a>.
+                        - And give it to an AI:  <a href="https://gemini.google.com/app/fd8bb952e321c0be" target="_blank">**Gemini**</a> 
+                        ---
+                        ### <span style="text-transform: none;">Embrace AI</span>
+                        - Even if AI "stalled" its already too good for it to disappear.
+                        - We need to embrace it, and teach our students how to use it effectively. 
+                        ---
+                         ### <span style="text-transform: none;">But its also not perfect</span>
+                        - In my AI for mathematics lectures, I start by showing them this <a href="https://gemini.google.com/app/af648556dcc5b135" target="_blank">*picture**</a>
+                        ---
+                        ### <span style="text-transform: none;">But its also not perfect</span>
+                        - In my AI for mathematics lectures, I start by showing them this <a href="https://gemini.google.com/app/af648556dcc5b135" target="_blank">**picture**</a>
+                        - The older/cheaper ones are pretty bad: <a href="https://openrouter.ai/chat?room=orc-1762177307-UJMvxzUvXkxRkINVmDXp" target="_blank">**OpenRouter**</a>
+                        ---
+                        ### <span style="text-transform: none;">How can we as lecturers use it?</span>
+                        - Making lecture <a href="https://gemini.google.com/app/fd8bb952e321c0be" target="_blank">**notes**</a> and <a href="https://www.overleaf.com/project/67e72d187a248c43d6ed260b" target="_blank">**slides**</a>
+                        ---
+                         ### <span style="text-transform: none;">How can we as lecturers use it?</span>
+                         - Making lecture <a href="https://gemini.google.com/app/fd8bb952e321c0be" target="_blank">**notes**</a> and <a href="https://www.overleaf.com/project/67e72d187a248c43d6ed260b" target="_blank">**slides**</a>
+                         - Writing  <a href="https://gemini.google.com/app" target="_blank">**problem sheets**</a> or <a href="CW2.pdf" target="_blank">**courseworks**</a>
+                        ---
+                          ### <span style="text-transform: none;">How can we as lecturers use it?</span>
+                        - Making lecture <a href="https://gemini.google.com/app/fd8bb952e321c0be" target="_blank">**notes**</a> and <a href="https://www.overleaf.com/project/67e72d187a248c43d6ed260b" target="_blank">**slides**</a>
+                        - Writing  <a href="https://gemini.google.com/app" target="_blank">**problem sheets**</a> or <a href="CW2.pdf" target="_blank">**courseworks**</a>
+                        - Making some live/interactive demos: <a href="https://cbirkbeck.github.io/CirclePackingGame/" target="_blank">**Circle packing games**</a>
+                        ---
+                        ### <span style="text-transform: none;">How should students use it</span>
+                        - Using AI as a tutor. For example by making a <a href="https://gemini.google.com/app/8d05473c783c5df3" target="_blank">**quiz**</a> or a <a href="https://notebooklm.google.com/notebook/e23158d9-c640-4b5c-a994-9ca5a63845a7" target="_blank">**podcast**</a>
+                        ---
+                         ### <span style="text-transform: none;">How should students use it</span>
+                        - Using AI as a tutor. For example by making a <a href="https://gemini.google.com/app/8d05473c783c5df3" target="_blank">**quiz**</a> or a <a href="https://notebooklm.google.com/notebook/e23158d9-c640-4b5c-a994-9ca5a63845a7" target="_blank">**podcast**</a>
+                        - We can strech students further, by asking them questions where they will need to use AI to help them: <a href="CW1NT.pdf" data-preview-link>**example**</a>.
+                        ---
+                         ### <span style="text-transform: none;">How should students use it</span>
+                        - Using AI as a tutor. For example by making a <a href="https://gemini.google.com/app/8d05473c783c5df3" target="_blank">**quiz**</a> or a <a href="https://notebooklm.google.com/notebook/e23158d9-c640-4b5c-a994-9ca5a63845a7" target="_blank">**podcast**</a>
+                        - We can strech students further, by asking them questions where they will need to use AI to help them: <a href="CW1NT.pdf" data-preview-link>**example**</a>.
+                        - Using AI for feedback on work. 
+                        ---
+                        ### <span style="text-transform: none;">Teaching students to use AI</span>
+                        - Learning how to prompt effectively is a skill in itself <a href="https://gandalf.lakera.ai/baseline" target="_blank">**Gandalf**</a>
+                        ---
+                         ### <span style="text-transform: none;">Teaching students to use AI</span>
+                        - Learning how to prompt effectively is a skill in itself <a href="https://gandalf.lakera.ai/baseline" target="_blank">**Gandalf**</a>
+                        - Teach yourself something new with AI tasks. 
+                        ---
+                         ### <span style="text-transform: none;">Teaching students to use AI</span>
+                        - Learning how to prompt effectively is a skill in itself <a href="https://gandalf.lakera.ai/baseline" target="_blank">**Gandalf**</a>
+                        - Teach yourself something new with AI tasks. 
+                        - Use it for Latexing up their work (but with warnings!).
+                    </textarea>
+                </section>
+
+                <section data-auto-animate data-background-gradient="linear-gradient(to bottom, #283b95, #17b2c3)">
+                    <h2>Thank you!</h2>
+                </section>
+
+            </div>
+        </div>
+
+        <script src="dist/reveal.js"></script>
+        <script src="plugin/zoom/zoom.js"></script>
+        <script src="plugin/notes/notes.js"></script>
+        <script src="plugin/search/search.js"></script>
+        <script src="plugin/markdown/markdown.js"></script>
+        <script src="plugin/highlight/highlight.js"></script>
+        <script src="plugin/highlight/lean.min.js"></script>
+        <script src="plugin/highlight/lean-goal.js"></script>
+        <script src="plugin/math/math.js"></script>
+        <script>
+            // Also available as an ES module, see:
+            // https://revealjs.com/initialization/
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                center: true,
+                hash: true,
+                margin: 0,
+
+                // Learn about plugins: https://revealjs.com/plugins/
+                plugins: [ RevealZoom, RevealNotes, RevealSearch, RevealMarkdown, RevealHighlight, RevealMath.KaTeX ],
+            });
+        </script>
+
+    </body>
+</html>
